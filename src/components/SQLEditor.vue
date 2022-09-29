@@ -26,6 +26,15 @@
           </b-col>
           <b-col md="4">
             <div class="query-button-holder">
+              <b-button variant="outline-primary" :v-if="code === ''" @click="doNothing" style="margin-right: 11px">
+                Covert to Analytic Flow
+                <b-icon icon="bar-chart-line"></b-icon>
+              </b-button>
+              <b-button variant="outline-primary" :v-if="code === ''" @click="doNothing" style="margin-right: 11px">
+                Export to CSV
+                <b-icon icon="download"></b-icon>
+              </b-button>
+
               <b-button variant="outline-primary" :disabled="code === ''" @click="showSaveQueryModal = !showSaveQueryModal" style="margin-right: 11px">
                 Share
                 <b-icon icon="share-fill"></b-icon>
@@ -184,6 +193,7 @@ export default {
         this.$bvModal.hide('modal-prevent-closing')
       })
     },
+    doNothing() {},
     createAthenaQueryExecution: async function () {
       const selectedDatabase = window.document.getElementById('v-step-0').value
       const queryParams = {
